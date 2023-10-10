@@ -1,14 +1,17 @@
-package com.xmzgg.juc.item001;
+package com.xmzgg.juc.Knowledge.item001;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
 
 /**
- * @ClassName juc001
+ * @ClassName CreateThread
  * @Description 多线程的5种实现方式
  * @Author XM
  * @Date 2022/09/22 11:17
  **/
-public class Juc001 {
+public class CreateThread {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         //创建线程第一种 继承Thread类并调用该类的start方法
         new MyThread().start();

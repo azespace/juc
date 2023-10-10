@@ -1,12 +1,12 @@
-package com.xmzgg.juc.item001;
+package com.xmzgg.juc.example.AlternatePrinting;
 
 /**
- * @ClassName juc003
+ * @ClassName juc004
  * @Description 线程交替打印
  * @Author XM
  * @Date 2022/09/23 16:42
  **/
-public class Juc004 {
+public class Print01 {
     //这里第一个线程启动执行printA的时候获取了同步锁,第二个线程执行了printB就会等待,此时printA调用wait释放锁并陷入了等待唤醒,然后printB获取到同步锁进入修改flag并打印输出后唤醒A后获取锁
     //后wait释放锁并等待notify
     boolean flag = false;
@@ -35,7 +35,7 @@ public class Juc004 {
         notify();
     }
     public static void main(String[] args) {
-        Juc004 juc004 = new Juc004();
+        Print01 juc004 = new Print01();
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 juc004.printA();

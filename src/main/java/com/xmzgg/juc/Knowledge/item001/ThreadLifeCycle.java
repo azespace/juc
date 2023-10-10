@@ -1,14 +1,14 @@
-package com.xmzgg.juc.item001;
+package com.xmzgg.juc.Knowledge.item001;
 
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName juc002
+ * @ClassName ThreadLifeCycle
  * @Description 线程的生命周期
  * @Author XM
  * @Date 2022/09/22 17:48
  **/
-public class Juc002 {
+public class ThreadLifeCycle {
     public static void main(String[] args) throws InterruptedException {
         //NEW -> RUNNABLE (Ready,Running) ->TERMINATED
         //线程的生命周期通过getState()方法查看   要注意这里输出为  NEW

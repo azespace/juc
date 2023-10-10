@@ -1,14 +1,14 @@
-package com.xmzgg.juc.item001;
+package com.xmzgg.juc.Knowledge.item001;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName juc003
- * @Description synchronized对象锁与类锁
+ * @Description synchronized对象锁与类锁详解
  * @Author XM
  * @Date 2022/09/28 17:15
  **/
-public class Juc003 {
+public class SynchronizedExp {
     // 对象锁 使用 synchronized 关键字修饰一个实例方法或者代码块 这个方法或者代码块被称为对象锁。对象锁是针对对象实例的，每个实例都有自己的对象锁。不同实例的对象锁是独立的，因此它们不会相互影响
     // 类锁 当你使用 synchronized 关键字修饰一个静态方法时，这个方法被称为类锁。类锁是针对整个类的，而不是特定的实例。只要一个线程获得了类锁，其他线程就不能同时调用该类的其他synchronized静态方法
 
@@ -54,8 +54,8 @@ public class Juc003 {
     }
     //还有一种是属于类锁就是方法带static或者代码块里的private final Object obj = new Object();
     public static void main(String[] args) {
-        Juc003 juc003 = new Juc003();
-        Juc003 juc003A = new Juc003();//用这个就不会锁住了
+        SynchronizedExp juc003 = new SynchronizedExp();
+        SynchronizedExp juc003A = new SynchronizedExp();//用这个就不会锁住了
         //这里测试了printB的this锁,只要其他线程用了这个对象，那么只要用了this的代码块的线程就会陷入锁竞争，因为调用该方法的对象和代码块锁的对象是同一个哈
         new Thread(() -> {
             synchronized (juc003A) {
