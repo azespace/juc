@@ -25,6 +25,7 @@ public class Juc002 {
         //主线程睡了1秒等待新的线程执行完毕了,此时线程状态是TERMINATED啦
         System.out.println(thread01.getState());
         //注意：sleep和wait的区别在于sleep是不需要锁如果有锁了也不会释放,而wait必须需要在synchronized中执行并且释放锁，一个是obj方法，一个是Thread方法
+        //必须在synchronized中执行保证了只有一个线程可以等待和访问对象锁，synchronized保证拥有锁，wait保障可以释放锁，允许其他线程获得锁并执行相关任务 并通过notify释放锁让synchronized重新获得锁  防止死锁和并发问题
 
 
         //wait方法让正在运行中的线程处于waiting等待状态,所以在run方法中执行,其他的则线程调用notify或者notifyAll唤醒,需要注意的是这2个方法需要配合synchronized锁，否则无法使用(直接报错)
@@ -45,7 +46,7 @@ public class Juc002 {
         });
         thread02.start();
         TimeUnit.SECONDS.sleep(1);
-        //睡了1等待释放锁  WAITING
+        //睡了1s等待释放锁  WAITING
         System.out.println("thread02:"+thread02.getState());
         synchronized (obj){
             obj.notify();
@@ -58,6 +59,7 @@ public class Juc002 {
         TimeUnit.SECONDS.sleep(1);
         System.out.println("thread02:"+thread02.getState());
 
+        //join
         Thread thread03 = new Thread(new Runnable() {
             @Override
             public void run() {
